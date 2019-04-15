@@ -18,5 +18,3 @@ knex('famous_people')
     .finally(() => {
       knex.destroy();
   });
-
-

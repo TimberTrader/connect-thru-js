@@ -13,11 +13,13 @@ const knex = require('knex')({
 
 let input = process.argv[2];
 
+
 knex.from('famous_people').select()
     .where('first_name', 'LIKE', `${input}`)
     .then((rows) => {
         for (person of rows) {
-            console.log(`${person['id']}: ${person['first_name']} ${person['last_name']}, born "${person['birthdate']}"`);
+            // let birthDate = new Date(${person['birthdate'].toISOString()})
+            console.log(`${person['id']}: ${person['first_name']} ${person['last_name']}, born "${person.birthdate.toISOString().substr(0, 10)}"`);
         }
     }).catch((err) => { console.log( err); throw err })
     .finally(() => {
